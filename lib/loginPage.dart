@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:rttv/authmethods.dart';
 import 'package:rttv/signuppage.dart';
@@ -54,133 +56,146 @@ class _LoginPageState extends State<LoginPage> {
       body: SafeArea(
           child: Container(
         padding: const EdgeInsets.fromLTRB(12, 60, 12, 12),
-        child: Column(
-          children: [
-            Expanded(
-              flex: 15,
-              child: Container(
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(40.0),
-                      child: Image.asset(
-                        'assets/rttv_logo.png',
-                        scale: 8,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 30),
-                      child: TextFieldInput(_emailController, 'Enter Email',
-                          TextInputType.emailAddress, false),
-                    ),
-                    const SizedBox(
-                      height: 18,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 30),
-                      child: TextFieldInput(
-                          _passwordController,
-                          'Enter Password',
-                          TextInputType.visiblePassword,
-                          true),
-                    ),
-                    const SizedBox(
-                      height: 36,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 120),
-                      child: GestureDetector(
-                        onTap: loginUser,
-                        child: Container(
-                          width: double.infinity,
-                          alignment: Alignment.center,
-                          padding: const EdgeInsets.symmetric(vertical: 1),
-                          decoration: const ShapeDecoration(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(4),
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/bg_image.jpg"),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 10.0,sigmaY: 10.0),
+          child: Container(
+        decoration: BoxDecoration(color: Colors.white.withOpacity(0.0)),
+            child: Column(
+              children: [
+                Expanded(
+                  flex: 15,
+                  child: Container(
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(40.0),
+                          child: Image.asset(
+                            'assets/rttv_logo.png',
+                            scale: 8,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 30),
+                          child: TextFieldInput(_emailController, 'Enter Email',
+                              TextInputType.emailAddress, false),
+                        ),
+                        const SizedBox(
+                          height: 18,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 30),
+                          child: TextFieldInput(
+                              _passwordController,
+                              'Enter Password',
+                              TextInputType.visiblePassword,
+                              true),
+                        ),
+                        const SizedBox(
+                          height: 36,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 120),
+                          child: GestureDetector(
+                            onTap: loginUser,
+                            child: Container(
+                              width: double.infinity,
+                              alignment: Alignment.center,
+                              padding: const EdgeInsets.symmetric(vertical: 1),
+                              decoration: const ShapeDecoration(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(4),
+                                    ),
+                                  ),
+                                  color: Colors.red),
+                              child: const Padding(
+                                padding: EdgeInsets.all(8.0),
+                                child: Text(
+                                  'Login',
+                                  style: TextStyle(
+                                      fontSize: 25,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
                                 ),
                               ),
-                              color: Colors.red),
-                          child: const Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: Text(
-                              'Login',
-                              style: TextStyle(
-                                  fontSize: 25,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold),
                             ),
                           ),
                         ),
-                      ),
+                        const SizedBox(
+                          height: 40,
+                        ),
+                        FittedBox(
+                          fit: BoxFit.fitHeight,
+                          child: Row(
+                            children: [
+                              const Text(
+                                'New User?',
+                                style: TextStyle(fontSize: 20,
+                                color: Colors.white),
+                              ),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (context) => const SignUpPage(),
+                                    ),
+                                  );
+                                },
+                                child: const Text(
+                                  'Sign Up',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold, fontSize: 20,color: Colors.white),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
-                    const SizedBox(
-                      height: 40,
-                    ),
-                    FittedBox(
-                      fit: BoxFit.fitHeight,
+                  ),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                    child: FittedBox(
+                      fit: BoxFit.contain,
                       child: Row(
                         children: [
-                          const Text(
-                            'New User?',
-                            style: TextStyle(fontSize: 20),
+                          GestureDetector(
+                            onTap: () {},
+                            child: const Text(
+                              'Contact us',
+                              style: TextStyle(fontSize: 5,color: Colors.white),
+                            ),
                           ),
                           const SizedBox(
-                            width: 10,
+                            width: 40,
                           ),
                           GestureDetector(
-                            onTap: () {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (context) => const SignUpPage(),
-                                ),
-                              );
-                            },
+                            onTap: () {},
                             child: const Text(
-                              'Sign Up',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 20),
+                              'Privacy Policy',
+                              style: TextStyle(fontSize: 5,color: Colors.white),
                             ),
                           ),
                         ],
                       ),
                     ),
-                  ],
-                ),
-              ),
-            ),
-            Expanded(
-              flex: 1,
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                child: FittedBox(
-                  fit: BoxFit.contain,
-                  child: Row(
-                    children: [
-                      GestureDetector(
-                        onTap: () {},
-                        child: const Text(
-                          'Contact us',
-                          style: TextStyle(fontSize: 5),
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 40,
-                      ),
-                      GestureDetector(
-                        onTap: () {},
-                        child: const Text(
-                          'Privacy Policy',
-                          style: TextStyle(fontSize: 5),
-                        ),
-                      ),
-                    ],
                   ),
                 ),
-              ),
+              ],
             ),
-          ],
+          ),
         ),
       )),
     );
